@@ -41,7 +41,17 @@ export default {
             return res.json();
           }
         })
-        .then((data) => console.log(data));
+        .then((data) => {
+          const results = [];
+          for (const id in data) {
+            results.push({
+              id: id,
+              name: data[id].name,
+              rating: data[id].rating,
+            });
+          }
+          this.results = results;
+        });
     },
   },
 };
